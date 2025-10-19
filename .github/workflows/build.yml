@@ -3,10 +3,10 @@ name: Docker Build
 on:
   push:
     branches:
-      - '*'
+      - "*"
     tags:
-      - 'v*'
-      - '*'
+      - "v*"
+      - "*"
   pull_request:
 
 jobs:
@@ -55,5 +55,7 @@ jobs:
 
       - name: Push image
         run: |
-          docker tag ${APP_NAME}:${TAG} ghcr.io/${ORG_NAME}/${APP_NAME}:${TAG}
-          docker push ghcr.io/${ORG_NAME}/${APP_NAME}:${TAG}
+          ORG_NAME_LC=$(echo "${ORG_NAME}" | tr '[:upper:]' '[:lower:]')
+          APP_NAME_LC=$(echo "${APP_NAME}" | tr '[:upper:]' '[:lower:]')
+          docker tag ${APP_NAME}:${TAG} ghcr.io/${ORG_NAME_LC}/${APP_NAME_LC}:${TAG}
+          docker push ghcr.io/${ORG_NAME_LC}/${APP_NAME_LC}:${TAG}
