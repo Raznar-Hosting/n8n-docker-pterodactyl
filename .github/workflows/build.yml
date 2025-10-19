@@ -56,4 +56,4 @@ jobs:
       - name: Push image
         run: |
           docker tag ${APP_NAME}:${TAG} ${ORG_NAME}/${APP_NAME}:${TAG}
-          docker push ${ORG_NAME}/${APP_NAME}:${TAG}
+          docker push ghcr.io/${ORG_NAME}/${APP_NAME}:${TAG}
